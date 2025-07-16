@@ -1,12 +1,369 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RENÇBER AKMAN | Portfolyo</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rençber Akman | Portfolyo</title>
+  <style>
+    /* === Temel Stil Ayarları === */
+    body {
+      cursor: none; /* Kendi özel imlecimizi kullanacağız */
+    }
+
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f5f5;
+      color: #111;
+      transition: background-color 0.4s, color 0.4s;
+    }
+    .dark-mode {
+      background-color: #121212;
+      color: #eee;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: linear-gradient(to right, #007cf0, #00dfd8);
+      color: white;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      background-color: #fff;
+      padding: 1rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #007cf0;
+      font-weight: bold;
+      transition: transform 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    nav a:hover {
+      transform: scale(1.2);
+      text-shadow: 0 0 5px #00dfd8;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0%;
+      height: 3px;
+      background: #00dfd8;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #00dfd8;
+      display: inline-block;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .project {
+      padding: 1rem;
+      border-radius: 10px;
+      background-color: #4383ea;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .project:hover {
+      transform: rotateY(5deg) scale(1.03);
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    .badges {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .badge {
+      padding: 0.5rem 1rem;
+      background-color: #007cf0;
+      color: white;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+
+    #toggleTheme {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #007cf0;
+      color: white;
+      border: none;
+      padding: 0.8rem 1rem;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00dfd8;
+      z-index: 1000;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      background-color: #eee;
+      margin-top: 4rem;
+    }
+
+    .dark-mode footer {
+      background-color: #1a1a1a;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      nav { gap: 0.7rem; }
+      .project { font-size: 0.9rem; }
+    }
+
+    /* === Özel İmleç === */
+    #customCursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(0, 124, 240, 0.8);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s;
+      z-index: 9999;
+      box-shadow: 0 0 10px rgba(0,124,240,0.8);
+    }
+
+    canvas#cursorTrail {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 998;
+    }
+  </style>
 </head>
 <body>
-  <h1>RENÇBER AKMAN | Portfolyo</h1>
-  <p>Bilgisayar Programcılığı öğrencisiyim. Unreal Engine ve C++ ile oyun geliştiriyorum, backend tarafında REST API, Docker gibi konuları araştırıyorum.</p>
+  <div id="customCursor"></div>
+
+  <header>
+    <h1>Rençber Akman | Portfolyo</h1>
+    <p>Backend Developer • Game Developer  </p>
+  </header>
+
+  <nav>
+  <a href="#about">About Me</a>
+<a href="#projects">Projects</a>
+<a href="#technologies">Technologies</a>
+<a href="#goals">Goals</a>
+<a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2>🧑‍💻 About Me</h2>
+    <p>Hi, I'm Rençber. I'm studying Computer Programming and currently focused on improving myself in backend development — working with technologies like Express.js, REST API architecture, PostgreSQL, Docker, and GitHub Actions.
+Game development is another area I'm interested in. I enjoy working with Unreal Engine and C++ as a hobby, and I'm currently building a racing game.
+No matter how stuck I get in either of these areas, I'm someone who doesn't give up, doesn't get overwhelmed, and keeps pushing forward to learn and grow. When I set my mind to something, I truly believe I can make it happen.</p>
+
+
+<h2>🧑‍💻 Hakkimda</h2>
+<p>Merhaba, ben Rençber. Bilgisayar Programcılığı öğrencisiyim. Şu an backend alanında kendimi geliştirmeye odaklıyım — Express.js, REST API mimarisi, PostgreSQL, Docker ve GitHub Actions gibi teknolojilerle çalışıyorum.
+Oyun geliştirme ise ilgilendiğim başka bir alan. Unreal Engine ve C++ ile hobi olarak uğraşıyorum ve şu anda bir yarış oyunu üzerinde çalışıyorum.
+Bu iki konuda ne kadar çıkmaza girersem gireyim, asla pes etmeyen, bunalmayan ve sıkılmadan üzerine gidip kendimi geliştirmeye çalışan birisiyim. Bu yüzden kafama bir şey koyduğumda yapabileceğime inanıyorum.
+</p>
+  </section>
+
+<section id="projects">
+  <h2>🎮 My Projects</h2>
+  <div class="projects">
+    <div class="project">
+      <h3>🚗 Racing Game</h3>
+      <p>I'm currently developing a racing game using Unreal Engine and C++.
+This project isn't just about making a game — it's a process where I dive deep into the physics system and truly aim to improve myself in this field.
+My goal isn't simply to build a game; it's to create my own world, think through algorithms, and learn how to produce within a space where I control the visuals and logic.</p>
+    </div>
+    <div class="project">
+  <h3>🔧 Portfolio Backend Development</h3>
+  <p>We’re working on the backend architecture for the portfolio site. So far, a basic REST API structure was created using Express.js. The app has been containerized with Docker and connected to a PostgreSQL database.</p>
+  <p>JWT authentication is planned to be integrated. CI/CD workflows via GitHub Actions are in development. We aim to move toward microservice architecture and implement content management based on user profiles.</p>
+</div>
+  </div>
+</section>
+  <section id="technologies">
+    <h2>⚙️ Tech Stack & Architectures</h2>
+    <div class="badges">
+      <div class="badge">Python</div>
+      <div class="badge">Html</div>
+      <div class="badge">Css</div>
+      <div class="badge">Pascal</div>
+      <div class="badge">Delphi7</div>
+      <div class="badge">C</div>
+      <div class="badge">Unreal Engine</div>
+      <div class="badge">Express.js</div>
+      <div class="badge">Docker</div>
+      <div class="badge">PostgreSQL</div>
+      <div class="badge">Git & GitHub</div>
+    </div>
+  </section>
+
+  <section id="goals">
+    <h2>🎯 - Targeted Skills</h2>
+   
+<div class="badges" style="display: flex; flex-wrap: wrap; gap: 0.7rem;">
+  
+  <div class="badge">MongoDB</div>
+  <div class="badge">Redis</div>
+  <div class="badge">GraphQL</div>
+  <div class="badge">OAuth2</div>
+  <div class="badge">Nginx</div>
+  <div class="badge">WebSockets</div>
+  <div class="badge">Unit Testing</div>
+  <div class="badge">CI/CD Pipelines</div>
+  <div class="badge">Microservices Architecture</div>
+</div>
+
+<p style="margin-top: 1rem; font-style: italic;">I aim to reach a professional level in these areas.             _-_-_-_-_-_-   Software is not just a tool for me; it's a way to create awareness, inspire thought, and build meaningful experiences.
+I'm focused on creating — not just games or apps, but something that can spark emotion, reflection, or curiosity.
+I often think:
+🧩 A single line of code isn’t just an operation — it might spark someone’s inner journey.
+🔍 Every project is more than a technical solution; it can also be an answer to a question or a feeling.
+I don’t want to build systems that merely "function" — I want to build things that carry meaning and make people think.
+If I can light up even one person’s mind, then what I’m doing is worth it.
+ </p>
+  </section>
+
+<section id="contact">
+  <h2>🌐 Contact</h2>
+  <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
+
+ <a href="https://www.linkedin.com/in/rençber-akman-92b416333" target="_blank" style="text-decoration: none;">
+  <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: linear-gradient(135deg, #007cf0, #00dfd8); color: white; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.2); transition: transform 0.2s;">
+    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="32" height="32" alt="LinkedIn" />
+    <p style="margin: 0;"><strong>LinkedIn:</strong> <span style="color:#fff;">Profili Gör</span></p>
+  </div>
+</a>
+
+    
+    <a href="https://github.com/RENCBERAKMAN" target="_blank" style="text-decoration: none;">
+      <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: linear-gradient(135deg, #333, #6e6e6e); color: white; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.2); transition: transform 0.2s;">
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="32" height="32" alt="GitHub" />
+        <p style="margin: 0;"><strong>GitHub:</strong> <span style="color:#ccc;">Profilime Git</span></p>
+      </div>
+    </a>
+
+  
+    <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: linear-gradient(135deg, #007cf0, #00dfd8); color: white; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.2);">
+      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" width="32" height="32" alt="E-posta" />
+      <p><strong>E-mail:</strong> <span onclick="copyEmail()" style="cursor:pointer; text-decoration: underline;">rencberakman7@gmail.com</span></p>
+    </div>
+  </div>
+</section>
+
+<footer style="margin-top: 3rem; padding: 2rem 1rem; text-align: center; background: #eee; color: #333; font-size: 0.95rem; box-shadow: 0 -2px 10px rgba(0,0,0,0.05);">
+  © 2025 Rençber Akman — <span style="color: #007cf0;">Loading... ❤️</span>
+</footer>
+
+  <button id="toggleTheme">🌙 Theme changed</button>
+
+  <canvas id="cursorTrail"></canvas>
+
+  <script>
+   
+    const toggleBtn = document.getElementById('toggleTheme');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+
+   
+    function copyEmail() {
+      navigator.clipboard.writeText('rencber@example.com');
+      alert('E-posta adresi kopyalandı!');
+    }
+
+
+    const cursor = document.getElementById("customCursor");
+    document.addEventListener("mousemove", e => {
+      cursor.style.left = e.clientX + "px";
+      cursor.style.top = e.clientY + "px";
+    });
+
+   
+    const canvas = document.getElementById('cursorTrail');
+    const ctx = canvas.getContext('2d');
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+
+    window.addEventListener('resize', () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    });
+
+    let particles = [];
+
+    document.addEventListener('mousemove', (e) => {
+      for (let i = 0; i < 3; i++) {
+        particles.push({
+          x: e.clientX,
+          y: e.clientY,
+          alpha: 1,
+          radius: Math.random() * 4 + 2
+        });
+      }
+    });
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < particles.length; i++) {
+        let p = particles[i];
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0, 124, 240, ${p.alpha})`;
+        ctx.fill();
+        p.y -= 0.5;
+        p.alpha -= 0.02;
+      }
+      particles = particles.filter(p => p.alpha > 0);
+      requestAnimationFrame(animateParticles);
+    }
+
+    animateParticles();
+  </script>
 </body>
 </html>
