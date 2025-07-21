@@ -1,13 +1,13 @@
 # RENÇBER AKMAN | Portfolio
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&duration=3000&pause=1000&color=FF6F91&center=true&vCenter=true&width=435&lines=Hi+there!+I'm+Rençber+Akman;Game+Developer+%2F+Backend+Explorer;Dreamer+%2F+Builder+%2F+Learner" alt="Typing SVG" />
+</p>
 
 ![Unreal Engine](https://img.shields.io/badge/Unreal-Engine-blue?logo=unrealengine)
 ![C++](https://img.shields.io/badge/C++-00599C?logo=cplusplus&logoColor=white)
 ![Express.js](https://img.shields.io/badge/Express.js-grey?logo=express&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
 
-<p align="center">
-  <img src="https://cdn-icons-png.flaticon.com/512/1086/1086933.png" alt="Computer Icon" width="100" />
-</p>
 
 # Hi there 👋 I'm Rençber
 
